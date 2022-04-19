@@ -1,0 +1,179 @@
+﻿<Window x:Class="QuizFinalVersion.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuizFinalVersion"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="900" Width="1600" Loaded="MainWindow_OnLoaded">
+
+    <Window.Resources>
+
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="AliceBlue"/>
+            <Setter Property="FontSize" Value="50"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+
+        <Style TargetType="TextBlock" x:Key="SmallFont">
+            <Setter Property="Foreground" Value="AliceBlue"/>
+            <Setter Property="FontSize" Value="35"/>
+        </Style>
+
+        <Style TargetType="CheckBox">
+            <Setter Property="Foreground" Value="AliceBlue"/>
+        </Style>
+
+        <!-- <Style TargetType="ListBox" x:Key="ListBoxStyle"> -->
+        <!--     <Setter Property="Background" Value="Transparent"/> -->
+        <!--     <Setter Property="Foreground" Value="AntiqueWhite"/> -->
+        <!-- -->
+        <!--     <Setter Property="Margin" Value="5"/> -->
+        <!--     <Setter Property="BorderThickness" Value="0" /> -->
+        <!--     <Setter Property="Margin" Value="1"/> -->
+        <!-- </Style> -->
+
+    </Window.Resources>
+
+    <Grid Background="Gray">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width=".1*"/>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition Width=".1*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width=".1*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition />
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition />
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition />
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition />
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition />
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition />
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition />
+            <RowDefinition Height="0.2*"/>
+        </Grid.RowDefinitions>
+
+        <!-- <Image Grid.ColumnSpan="17" Grid.RowSpan="17" Source="{StaticResource Scene}" -->
+               <!-- Stretch="UniformToFill" /> -->
+
+        <Viewbox Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="6" HorizontalAlignment="Center">
+            <TextBlock Text="Quiz" HorizontalAlignment="Center" x:Name="Title" />
+        </Viewbox>
+
+        <Button Grid.Column="1" Grid.Row="3" Content="Start" x:Name="StartButton"
+                Click="StartButton_Click"/>
+
+        <TextBlock Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="3" Text="00:00:00"
+                   HorizontalAlignment="Center" x:Name="Timer" />
+
+        <Button Grid.Column="5" Grid.Row="3" Content="Stop" x:Name="StopButton"
+                IsEnabled="False" Click="StopButton_Click"/>
+
+        <Viewbox Grid.Column="1" Grid.Row="5"  Grid.ColumnSpan="6" HorizontalAlignment="Center">
+            <TextBlock Text="Pytanko" x:Name="QuestionName" HorizontalAlignment="Center" />
+        </Viewbox>
+
+        <CheckBox
+            x:Name="CorrectA" HorizontalAlignment="Center" VerticalAlignment="Center" Content="A"
+            Grid.Column="1" Grid.Row="7" >
+            <CheckBox.LayoutTransform>
+                <ScaleTransform ScaleX="2" ScaleY="2" />
+            </CheckBox.LayoutTransform>
+        </CheckBox>
+
+        <Viewbox Grid.Column="2" Grid.Row="7" Grid.ColumnSpan="2" Width="300" HorizontalAlignment="Left">
+            <TextBlock TextWrapping="Wrap" Width="300"
+                           Text="Odpowiedź A" VerticalAlignment="Center" x:Name="AnswerA" FontSize="20" />
+        </Viewbox>
+
+
+        <CheckBox
+            x:Name="CorrectB" HorizontalAlignment="Center" VerticalAlignment="Center" Content="B"
+            Grid.Column="4" Grid.Row="7">
+            <CheckBox.LayoutTransform>
+                <ScaleTransform ScaleX="2" ScaleY="2" />
+            </CheckBox.LayoutTransform>
+        </CheckBox>
+
+        <Viewbox Grid.Column="5" Grid.Row="7" Grid.ColumnSpan="2" Width="300" HorizontalAlignment="Left">
+            <TextBlock TextWrapping="Wrap" Width="300"
+                       Text="Odpowiedź B" VerticalAlignment="Center" x:Name="AnswerB" FontSize="20" />
+        </Viewbox>
+
+        <CheckBox
+            x:Name="CorrectC" HorizontalAlignment="Center" VerticalAlignment="Center" Content="C"
+            Grid.Column="1" Grid.Row="9">
+            <CheckBox.LayoutTransform>
+                <ScaleTransform ScaleX="2" ScaleY="2" />
+            </CheckBox.LayoutTransform>
+        </CheckBox>
+
+        <Viewbox Grid.Column="2" Grid.Row="9" Grid.ColumnSpan="2" Width="300" HorizontalAlignment="Left">
+            <TextBlock TextWrapping="Wrap" Width="300"
+                       Text="Odpowiedź C" VerticalAlignment="Center" x:Name="AnswerC" FontSize="20" />
+        </Viewbox>
+
+        <CheckBox
+            x:Name="CorrectD" HorizontalAlignment="Center" VerticalAlignment="Center" Content="D"
+            Grid.Column="4" Grid.Row="9">
+            <CheckBox.LayoutTransform>
+                <ScaleTransform ScaleX="2" ScaleY="2" />
+            </CheckBox.LayoutTransform>
+        </CheckBox>
+
+        <Viewbox Grid.Column="5" Grid.Row="9" Grid.ColumnSpan="2" Width="300" HorizontalAlignment="Left">
+            <TextBlock TextWrapping="Wrap" Width="300"
+                       Text="Odpowiedź D" VerticalAlignment="Center" x:Name="AnswerD" FontSize="20" />
+        </Viewbox>
+
+        <Button Grid.Column="4" Grid.ColumnSpan="3" HorizontalAlignment="Center" Grid.Row="11"
+                Content="Następne pytanie" x:Name="NextButton" Click="NextButton_Click"
+                IsEnabled="False" />
+
+        <TextBlock Grid.Column="8" Grid.Row="1" Text="Lista pytań: " x:Name="QuestionListTextBlock" Visibility="Hidden"/>
+
+        <!-- <ListBox x:Name="AnswersList" Grid.Column="8" Grid.Row="3" Grid.RowSpan="9" -->
+                 <!-- Style="{StaticResource ListBoxStyle}" Visibility="Hidden"/> -->
+
+        <ListBox x:Name="AnswersList" Grid.Column="8" Grid.Row="3" Grid.RowSpan="9"  
+                 Visibility="Hidden" SelectionChanged="AnswersList_SelectionChanged">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Path=Name}" >
+                    </TextBlock>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="Foreground" Value="{Binding Path=Brush}">
+                    </Setter>
+                    <!-- <Style.Triggers> -->
+                    <!--     <Trigger Property="ListBoxItem.IsSelected" Value="True" > -->
+                    <!--         <Setter Property="Foreground" Value="Pink" /> -->
+                    <!--     </Trigger> -->
+                    <!-- </Style.Triggers> -->
+                </Style>
+            </ListBox.ItemContainerStyle>
+        </ListBox>
+
+        <TextBlock x:Name="Results" Grid.Column="8" Grid.Row="13" Style="{StaticResource SmallFont}"/>
+
+        <TextBlock x:Name="QuestionNumber" Grid.Column="1" Grid.Row="13" Grid.ColumnSpan="6"/>
+
+    </Grid>
+</Window>
