@@ -16,26 +16,26 @@
         </Style>
 
         <Style TargetType="TextBlock" x:Key="SmallFont">
-            <Setter Property="Foreground" Value="AliceBlue"/>
+            <Setter Property="Foreground" Value="#F3AC30"/>
             <Setter Property="FontSize" Value="35"/>
         </Style>
 
         <Style TargetType="CheckBox">
-            <Setter Property="Foreground" Value="AliceBlue"/>
+            <Setter Property="Foreground" Value="#F3AC30"/>
+            <Setter Property="FontWeight" Value="Bold"/>
         </Style>
 
-        <!-- <Style TargetType="ListBox" x:Key="ListBoxStyle"> -->
-        <!--     <Setter Property="Background" Value="Transparent"/> -->
-        <!--     <Setter Property="Foreground" Value="AntiqueWhite"/> -->
-        <!-- -->
-        <!--     <Setter Property="Margin" Value="5"/> -->
-        <!--     <Setter Property="BorderThickness" Value="0" /> -->
-        <!--     <Setter Property="Margin" Value="1"/> -->
-        <!-- </Style> -->
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#F3AC30" />
+            <Setter Property="BorderBrush" Value="#AA7820" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontSize" Value="40" />
+            <Setter Property="BorderThickness" Value="7" />
+        </Style>
 
     </Window.Resources>
 
-    <Grid Background="Gray">
+    <Grid Background="#53707F">
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width=".1*"/>
@@ -68,21 +68,30 @@
             <RowDefinition Height="0.2*"/>
         </Grid.RowDefinitions>
 
-        <!-- <Image Grid.ColumnSpan="17" Grid.RowSpan="17" Source="{StaticResource Scene}" -->
-               <!-- Stretch="UniformToFill" /> -->
-
         <Viewbox Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="6" HorizontalAlignment="Center">
-            <TextBlock Text="Quiz" HorizontalAlignment="Center" x:Name="Title" />
+            <TextBlock Text="Quiz" HorizontalAlignment="Center" x:Name="Title" Foreground="#F3AC30"/>
         </Viewbox>
 
         <Button Grid.Column="1" Grid.Row="3" Content="Start" x:Name="StartButton"
-                Click="StartButton_Click"/>
+                Click="StartButton_Click" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15" />
+                </Style>
+            </Button.Resources>
+        </Button>
 
         <TextBlock Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="3" Text="00:00:00"
                    HorizontalAlignment="Center" x:Name="Timer" />
 
         <Button Grid.Column="5" Grid.Row="3" Content="Stop" x:Name="StopButton"
-                IsEnabled="False" Click="StopButton_Click"/>
+                IsEnabled="False" Click="StopButton_Click" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15" />
+                </Style>
+            </Button.Resources>
+        </Button>
 
         <Viewbox Grid.Column="1" Grid.Row="5"  Grid.ColumnSpan="6" HorizontalAlignment="Center">
             <TextBlock Text="Pytanko" x:Name="QuestionName" HorizontalAlignment="Center" />
@@ -92,7 +101,7 @@
             x:Name="CorrectA" HorizontalAlignment="Center" VerticalAlignment="Center" Content="A"
             Grid.Column="1" Grid.Row="7" >
             <CheckBox.LayoutTransform>
-                <ScaleTransform ScaleX="2" ScaleY="2" />
+                <ScaleTransform ScaleX="4" ScaleY="4" />
             </CheckBox.LayoutTransform>
         </CheckBox>
 
@@ -106,7 +115,7 @@
             x:Name="CorrectB" HorizontalAlignment="Center" VerticalAlignment="Center" Content="B"
             Grid.Column="4" Grid.Row="7">
             <CheckBox.LayoutTransform>
-                <ScaleTransform ScaleX="2" ScaleY="2" />
+                <ScaleTransform ScaleX="4" ScaleY="4" />
             </CheckBox.LayoutTransform>
         </CheckBox>
 
@@ -119,7 +128,7 @@
             x:Name="CorrectC" HorizontalAlignment="Center" VerticalAlignment="Center" Content="C"
             Grid.Column="1" Grid.Row="9">
             <CheckBox.LayoutTransform>
-                <ScaleTransform ScaleX="2" ScaleY="2" />
+                <ScaleTransform ScaleX="4" ScaleY="4" />
             </CheckBox.LayoutTransform>
         </CheckBox>
 
@@ -132,7 +141,7 @@
             x:Name="CorrectD" HorizontalAlignment="Center" VerticalAlignment="Center" Content="D"
             Grid.Column="4" Grid.Row="9">
             <CheckBox.LayoutTransform>
-                <ScaleTransform ScaleX="2" ScaleY="2" />
+                <ScaleTransform ScaleX="4" ScaleY="4" />
             </CheckBox.LayoutTransform>
         </CheckBox>
 
@@ -141,14 +150,17 @@
                        Text="Odpowiedź D" VerticalAlignment="Center" x:Name="AnswerD" FontSize="20" />
         </Viewbox>
 
-        <Button Grid.Column="4" Grid.ColumnSpan="3" HorizontalAlignment="Center" Grid.Row="11"
+        <Button Grid.Column="5" Grid.Row="11"
                 Content="Następne pytanie" x:Name="NextButton" Click="NextButton_Click"
-                IsEnabled="False" />
+                IsEnabled="False" FontSize="18">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15" />
+                </Style>
+            </Button.Resources>
+        </Button>
 
         <TextBlock Grid.Column="8" Grid.Row="1" Text="Lista pytań: " x:Name="QuestionListTextBlock" Visibility="Hidden"/>
-
-        <!-- <ListBox x:Name="AnswersList" Grid.Column="8" Grid.Row="3" Grid.RowSpan="9" -->
-                 <!-- Style="{StaticResource ListBoxStyle}" Visibility="Hidden"/> -->
 
         <ListBox x:Name="AnswersList" Grid.Column="8" Grid.Row="3" Grid.RowSpan="9"  
                  Visibility="Hidden" SelectionChanged="AnswersList_SelectionChanged">
@@ -162,18 +174,18 @@
                 <Style TargetType="ListBoxItem">
                     <Setter Property="Foreground" Value="{Binding Path=Brush}">
                     </Setter>
-                    <!-- <Style.Triggers> -->
-                    <!--     <Trigger Property="ListBoxItem.IsSelected" Value="True" > -->
-                    <!--         <Setter Property="Foreground" Value="Pink" /> -->
-                    <!--     </Trigger> -->
-                    <!-- </Style.Triggers> -->
+                    <Style.Triggers>
+                        <Trigger Property="ListBoxItem.IsSelected" Value="True" >
+                            <Setter Property="Foreground" Value="Blue" />
+                        </Trigger>
+                    </Style.Triggers>
                 </Style>
             </ListBox.ItemContainerStyle>
         </ListBox>
 
         <TextBlock x:Name="Results" Grid.Column="8" Grid.Row="13" Style="{StaticResource SmallFont}"/>
 
-        <TextBlock x:Name="QuestionNumber" Grid.Column="1" Grid.Row="13" Grid.ColumnSpan="6"/>
+        <TextBlock x:Name="QuestionNumber" Grid.Column="1" Grid.Row="13" Grid.ColumnSpan="6" Foreground="#F3AC30"/>
 
     </Grid>
 </Window>

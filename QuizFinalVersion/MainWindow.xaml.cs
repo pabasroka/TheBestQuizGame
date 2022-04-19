@@ -63,7 +63,7 @@ namespace QuizFinalVersion
         private void QuizSetup()
         {
             _currentQuestion = 0;
-            _questions = _quiz.Questions;
+            _questions = _quiz.Questions.OrderBy(i => Guid.NewGuid()).ToList();
             Title.Text = _quiz.Name;
             QuestionNumber.Text = $"Pytanie nr 1 / {_questions.Count}";
         }
